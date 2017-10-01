@@ -49,23 +49,7 @@ $(document).ready(function() {
             })
             var indexOfCurrentSession = indexes[0]
 
-            if (indexOfCurrentSession < sayings_in_session.length) {
-                var nextSaying = sayings_in_session[indexOfCurrentSession + 1];
-                displaySaying(nextSaying.dada, nextSaying.first, nextSaying.second);
-            }
-        }
-    });
-
-    $("#nextSaying").click(function() {
-        if (sayings_in_session.length > 1) {
-            var indexes = $.map(sayings_in_session, function(obj, index) {
-                if (obj.dada == currentSaying.dada) {
-                    return index;
-                }
-            })
-            var indexOfCurrentSession = indexes[0]
-
-            if (indexOfCurrentSession < sayings_in_session.length) {
+            if (indexOfCurrentSession < sayings_in_session.length - 1) {
                 var nextSaying = sayings_in_session[indexOfCurrentSession + 1];
                 displaySaying(nextSaying.dada, nextSaying.first, nextSaying.second);
             }
