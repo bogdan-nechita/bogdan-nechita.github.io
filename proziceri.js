@@ -1,7 +1,7 @@
 // All the sayings generated in the session.
 var sayings_in_session = [];
 // All the sayings, parsed from the CSV file.
-var parsedSayings;
+var allParsedSayings;
 // The saying currently on display.
 var currentSaying;
 
@@ -109,16 +109,16 @@ function displaySaying(dada_saying, first_saying, second_saying) {
 }
 
 function getDadaSaying() {
-	if (parsedSayings) {
+	if (allParsedSayings) {
 		// Generate two random ids between 0 and the number of sayings in the file.
-	  var numberOfSayings = results.data.length;
+	  var numberOfSayings = allParsedSayings.length;
 
 		var firstSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
 		var secondSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
 
 		// Get the two sayings.
-		var firstSaying = results.data[firstSayingIndex];
-		var secondSaying = results.data[secondSayingIndex];
+		var firstSaying = allParsedSayings[firstSayingIndex];
+		var secondSaying = allParsedSayings[secondSayingIndex];
 		var separator = firstSaying[1] ? ' ' : firstSaying[1]
 
 		// Return the part1 and separator from the first saying and the part2 from the second saying
@@ -146,7 +146,7 @@ function openCSVFile() {
 function processData (data) {
 	Papa.parse(data, {
 	  complete: function(results) {
-	  	parsedSayings = results.data
+	  	allParsedSayings = results.data
 	  	getDadaSaying()
 	  }
   });
