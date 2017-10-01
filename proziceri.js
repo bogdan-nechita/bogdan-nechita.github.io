@@ -151,7 +151,7 @@ function processData (data) {
 	  	var part1Padding = separator == ',' ? '' : ' ';
 
 	  	// Create the dada saying.
-	  	var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + sencondSaying[2]
+	  	var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + secondSaying[2]
 
       // Add the saying to the session and display it.
   		addSayingToSession(dadaSaying, firstSaying, secondSaying);
