@@ -53,17 +53,6 @@ body{
 }
 #newSaying{
   outline: 0;
-  margin-top: 25px;
-  font-size: 16px;
-  background-color: white;
-  border: 1px solid #555555;
-  width: 220px;
-  padding: 5px;
-  border-radius: 10px;
-}
-#shareOnFacebook{
-  outline: 0;
-  margin-top: 25px;
   margin-bottom: 25px;
   font-size: 16px;
   background-color: white;
