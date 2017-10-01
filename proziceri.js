@@ -135,28 +135,27 @@ function openCSVFile() {
 function processData (data) {
 	Papa.parse(data, {
 	  complete: function(results) {
-			// Generate two random ids between 0 and the number of sayings in the file.
-			var numberOfSayings = results.data.length;
+	    // Generate two random ids between 0 and the number of sayings in the file.
+	    var numberOfSayings = results.data.length;
 
 	  	var firstSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
 	  	var secondSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
 
 	  	// Get the two sayings.
 	  	var firstSaying = results.data[firstSayingIndex];
-	  	var sencondSaying = results.data[secondSayingIndex];
+	  	var secondSaying = results.data[secondSayingIndex];
 	  	var separator = firstSaying[1] ? ' ' : firstSaying[1]
 
 	  	// Return the part1 and separator from the first saying and the part2 from the second saying
 	  	// if the separator is a comma, don't add an extra space before it
 	  	var part1Padding = separator == ',' ? '' : ' ';
 
+	  	// Create the dada saying.
 	  	var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + sencondSaying[2]
-  	
-  		// Return the dada_saying as well as the original sayings
-  		//var json_sayings = { dada_saying: dada_saying, first_saying: first_saying.to_json, second_saying: second_saying.to_json}.to_json
 
+      // Add the saying to the session and display it.
   		addSayingToSession(dadaSaying, firstSaying, secondSaying);
-			displaySaying(dadaSaying, firstSaying, secondSaying);
+  		displaySaying(dadaSaying, firstSaying, secondSaying);
 	  }
   });
 }
