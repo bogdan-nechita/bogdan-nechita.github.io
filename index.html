@@ -21,23 +21,6 @@
 </head>
 
 <body>
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '243890192713323',
-	      xfbml      : true,
-	      version    : 'v2.8'
-	    });
-	  };
-
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
 	<div id="logoContainer">
 		<span id="header">Proziceri și verbători</span>
 		<br/><br/>
@@ -54,8 +37,6 @@
 			<br/><br/><br/>
 			<button id="newSaying">meșterește una nouă</button>
 			<br>
-			<button id="shareOnFacebook">pune-o pe Facebook</button>
-			<br/>
 			<span id="generatedSayingsText">prozicerile și verbătorile generate de tine până acum</span>
 			<br/><br>
 			<button id="previousSaying">înapoi</button>
