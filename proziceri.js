@@ -144,7 +144,7 @@ function processData (data) {
 	  	// Get the two sayings.
 	  	var firstSaying = results.data[firstSayingIndex];
 	  	var sencondSaying = results.data[secondSayingIndex];
-	  	var separator = firstSaying[1];
+	  	var separator = firstSaying[1] ? ' ' : firstSaying[1]
 
 	  	// Return the part1 and separator from the first saying and the part2 from the second saying
 	  	// if the separator is a comma, don't add an extra space before it
