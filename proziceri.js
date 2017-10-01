@@ -110,18 +110,20 @@ function getDadaSaying() {
         // Get the two sayings.
         var firstSaying = allParsedSayings[firstSayingIndex];
         var secondSaying = allParsedSayings[secondSayingIndex];
-        var separator = firstSaying[1] ? ' ' : firstSaying[1]
+        var separatorFirstSaying = firstSaying[1] ? firstSaying[1] : ' ';
+        var separatorSecondSaying = secondSaying[1] ? secondSaying[1] : ' ';
 
         // Return the part1 and separator from the first saying and the part2 from the second saying
         // if the separator is a comma, don't add an extra space before it
-        var part1Padding = separator == ',' ? '' : ' ';
+        var part1Padding = separatorFirstSaying == ',' ? '' : ' ';
+        var part2Padding = separatorSecondSaying == ',' ? '' : ' ';
 
         // Create the dada saying.
-        var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + secondSaying[2]
+        var dadaSaying = firstSaying[0] + part1Padding + separatorFirstSaying + ' ' + secondSaying[2]
 
         // Add the saying to the session and display it.
-        var firstSayingString = firstSaying[0] + (firstSaying[1] ? firstSaying[1] : '') + ' ' + firstSaying[2];
-        var secondSayingString = secondSaying[0] + (secondSaying[1] ? secondSaying[1] : '') + ' ' + secondSaying[2];
+        var firstSayingString = firstSaying[0] + part1Padding + separatorFirstSaying + ' ' + firstSaying[2];
+        var secondSayingString = secondSaying[0] + part2Padding + separatorSecondSaying + ' ' + secondSaying[2];
 
         addSayingToSession(dadaSaying, firstSayingString, secondSayingString);
         displaySaying(dadaSaying, firstSayingString, secondSayingString);
