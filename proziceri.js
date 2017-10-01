@@ -1,11 +1,11 @@
 // All the sayings generated in the session.
-var sayings_in_session = []
-
+var sayings_in_session = [];
+// All the sayings, parsed from the CSV file.
+var parsedSayings;
 // The saying currently on display.
 var currentSaying;
 
 $( document ).ready(function() {
-	//getDadaSaying();
 	openCSVFile();	
 
 	$("#originalSayingsContainer").css("top", function(){
@@ -108,19 +108,30 @@ function displaySaying(dada_saying, first_saying, second_saying) {
 	$("#oSaying2").html(second_saying);
 }
 
-function getDadaSaying(){
-	$.ajax({
-		url: "http://188.166.21.170/sayings/dada_saying",
-		jsonp: "callback",
-		dataType: "jsonp",
-		success: function( response ) {
-			var first_saying = response.first_saying.part1 + (response.first_saying.separator == ',' ? '' : ' ') + response.first_saying.separator + ' ' + response.first_saying.part2;
-			var second_saying = response.second_saying.part1 + (response.second_saying.separator == ',' ? '' : ' ') + response.second_saying.separator + ' ' + response.second_saying.part2;		
-			
-			addSayingToSession(response.dada_saying, first_saying, second_saying);
-			displaySaying(response.dada_saying, first_saying, second_saying);
-		}
-	});
+function getDadaSaying() {
+	if (parsedSayings) {
+		// Generate two random ids between 0 and the number of sayings in the file.
+	  var numberOfSayings = results.data.length;
+
+		var firstSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
+		var secondSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
+
+		// Get the two sayings.
+		var firstSaying = results.data[firstSayingIndex];
+		var secondSaying = results.data[secondSayingIndex];
+		var separator = firstSaying[1] ? ' ' : firstSaying[1]
+
+		// Return the part1 and separator from the first saying and the part2 from the second saying
+		// if the separator is a comma, don't add an extra space before it
+		var part1Padding = separator == ',' ? '' : ' ';
+
+		// Create the dada saying.
+		var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + secondSaying[2]
+
+	  // Add the saying to the session and display it.
+		addSayingToSession(dadaSaying, firstSaying, secondSaying);
+		displaySaying(dadaSaying, firstSaying, secondSaying);
+	}
 }
 
 function openCSVFile() {
@@ -135,27 +146,8 @@ function openCSVFile() {
 function processData (data) {
 	Papa.parse(data, {
 	  complete: function(results) {
-	    // Generate two random ids between 0 and the number of sayings in the file.
-	    var numberOfSayings = results.data.length;
-
-	  	var firstSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
-	  	var secondSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
-
-	  	// Get the two sayings.
-	  	var firstSaying = results.data[firstSayingIndex];
-	  	var secondSaying = results.data[secondSayingIndex];
-	  	var separator = firstSaying[1] ? ' ' : firstSaying[1]
-
-	  	// Return the part1 and separator from the first saying and the part2 from the second saying
-	  	// if the separator is a comma, don't add an extra space before it
-	  	var part1Padding = separator == ',' ? '' : ' ';
-
-	  	// Create the dada saying.
-	  	var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + secondSaying[2]
-
-      // Add the saying to the session and display it.
-  		addSayingToSession(dadaSaying, firstSaying, secondSaying);
-  		displaySaying(dadaSaying, firstSaying, secondSaying);
+	  	parsedSayings = results.data
+	  	getDadaSaying()
 	  }
   });
 }
