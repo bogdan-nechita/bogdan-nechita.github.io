@@ -120,8 +120,8 @@ function getDadaSaying() {
         var dadaSaying = firstSaying[0] + part1Padding + separator + ' ' + secondSaying[2]
 
         // Add the saying to the session and display it.
-        addSayingToSession(dadaSaying, firstSaying, secondSaying);
-        displaySaying(dadaSaying, firstSaying, secondSaying);
+        addSayingToSession(dadaSaying, firstSaying.join(' '), secondSaying.join(' '));
+        displaySaying(dadaSaying, firstSaying.join(' '), secondSaying.join(' '));
     }
 }
 
