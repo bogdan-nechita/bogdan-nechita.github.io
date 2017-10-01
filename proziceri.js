@@ -136,7 +136,7 @@ function processData (data) {
 	Papa.parse(data, {
 	  complete: function(results) {
 			// Generate two random ids between 0 and the number of sayings in the file.
-			var numberOfSayings = results.data.count;
+			var numberOfSayings = results.data.length;
 
 	  	var firstSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
 	  	var secondSayingIndex = Math.floor((Math.random() * numberOfSayings) + 1);
