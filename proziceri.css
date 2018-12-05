@@ -90,7 +90,7 @@ body{
 
 #aboutContainer{
   width: 800px;
-  height: 500px;
+  height: 550px;
   margin: auto;
   position: absolute;
   top: 0;
@@ -102,9 +102,9 @@ body{
 #about {
   font-size: 20px;
   text-align: center;
-  margin-left: -29px;
+  right: 25px;
   cursor: pointer;
-  bottom: 15px;
+  top: 15px;
   position: fixed;
 }
 
